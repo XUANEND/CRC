@@ -7,7 +7,7 @@ BiocManager::install("hgu133plus2cdf")
 
 library(affy)
 
-data_dir = ""
+data_dir = "D:\\Documents\\R\\data\\CRC\\"
 
 CEL_dir1 = "data/GSE17536_RAW/"
 CEL_dir2 = "data/GSE38832_RAW/"
@@ -19,3 +19,4 @@ Data2 = ReadAffy(celfile.path = CEL_dir2)
 Data3 = ReadAffy(celfile.path = )
 
 eset1 = mas5(Data1)
+eset = rma(Data1)
