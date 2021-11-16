@@ -46,11 +46,11 @@ barcode[,"Tumor_Sample_Barcode"] = levels(factor(tumor.barcode[,2]))
 #  }
 #}
 
-#for (case in 1:nrow(barcode)) {
-#  if(barcode[case,"case_submitter_id"] %in% clin[,"case_submitter_id"]){
-#    clin[grepl(barcode[case,"case_submitter_id"],clin[,"case_submitter_id"]),][,"Tumor_Sample_Barcode"] = barcode[case,"Tumor_Sample_Barcode"]
-#  }
-#}
+for (case in 1:nrow(barcode)) {
+  if(barcode[case,"case_submitter_id"] %in% clin[,"case_submitter_id"]){
+    clin[grepl(barcode[case,"case_submitter_id"],clin[,"case_submitter_id"]),][,"Tumor_Sample_Barcode"] = barcode[case,"Tumor_Sample_Barcode"]
+  }
+}
 
 # maf文件需要哪些突变信息即可读取、作图
 maf = data[,c("Hugo_Symbol","Chromosome","Start_Position","End_Position","Variant_Classification","Reference_Allele","Tumor_Seq_Allele2","Variant_Type","Tumor_Sample_Barcode")]
