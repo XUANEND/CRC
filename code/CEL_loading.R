@@ -34,5 +34,5 @@ expr1[,colnames(expr1)[1]]
 View(expr1[,grepl("GSM950411",colnames(expr1))])
 
 
-
+View(exprs(d1))
 
