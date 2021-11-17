@@ -47,6 +47,12 @@ Read = read.maf(maf = maf,
                 clinicalData = clin,
                 verbose = FALSE)
 
+p = oncoplot(maf = Read,
+         genes = genes,
+         draw_titv = TRUE)
+
+png(filename = "result/img/Figure_1b.png", width = 981, height = 812)
 oncoplot(maf = Read,
          genes = genes,
          draw_titv = TRUE)
+dev.off()

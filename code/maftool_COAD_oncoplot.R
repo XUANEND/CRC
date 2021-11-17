@@ -59,6 +59,8 @@ coad = read.maf(maf = maf,
                 clinicalData = clin,
                 verbose = FALSE)
 
+png(filename = "result/img/Figure_1a.png")
 oncoplot(maf = coad,
          genes = genes,
          draw_titv = TRUE)
+dev.off()
