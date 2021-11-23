@@ -24,16 +24,32 @@ data2 = getGEO('GSE39582', destdir="D:\\Documents\\R\\data\\CRC\\GSE17536_RAW\\"
                getGPL = FALSE)
 
 
-data1 = getGEO(filename = 'D:\\Documents\\R\\data\\CRC\\GSE17536_RAW\\family\\GSE17536_series_matrix.txt.gz', 
-               #destdir="D:\\Documents\\R\\data\\CRC\\GSE17536_RAW\\",
-               AnnotGPL = FALSE,
-               getGPL = FALSE)
+data1 = getGEO(
+  filename = 'D:\\Documents\\R\\data\\CRC\\GSE17536_RAW\\family\\GSE17536_series_matrix.txt.gz',
+  AnnotGPL = FALSE,
+  getGPL = FALSE)
 
 s = pData(data1)
-head(exprs(data1[[1]]))
+head(exprs(data1))
 
 colnames(s)
 dfs = s$`dfs_event (disease free survival; cancer recurrence):ch1`
 dfs = data.frame(dfs)
-View(head(s[!grepl("NA",dfs[,"dfs"]),]))
+nrow(s[!grepl("NA",dfs[,"dfs"]),])
 
+fpkmToTpm <- function(fpkm)
+{
+  exp(log(fpkm) - log(sum(fpkm)) + log(1e6))
+}
+
+
+a = apply(exprs(data1), 2, sum)
+View(a)
+
+TPM = apply(exprs(data1),2,fpkmToTpm)
+
+TPM[1:3,]
+
+View(colSums(TPM[1:3,]))
+
+View(exprs(data1[1:3,1:4]))
